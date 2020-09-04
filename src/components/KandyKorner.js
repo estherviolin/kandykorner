@@ -1,22 +1,25 @@
 import React from "react"
-import {LocationList} from "./location/LocationList"
-import {LocationProvider} from "./location/LocationProvider"
-import {ProductList} from "./product/ProductList"
-import {ProductProvider} from "./product/ProductProvider"
+import { NavBar } from "./nav/NavBar"
+import { ApplicationViews } from "./ApplicationViews"
+
+
 
 export const KandyKorner = () => (
     <>
-        <h2>KandyKorner</h2>
+        <NavBar />
+        <ApplicationViews />
 
-        <article className="locations">
-            <LocationProvider>
-                <LocationList/>
-            </LocationProvider>
-        </article>
-        <article className="products">
-            <ProductProvider>
-                <ProductList/>
-            </ProductProvider>
-        </article>
+      
     </>
 )
+
+/* <article className="locations">
+<LocationProvider>
+    <LocationList/>
+</LocationProvider>
+</article>
+<article className="products">
+<ProductProvider>
+    <ProductList/>
+</ProductProvider>
+</article> */
