@@ -46,8 +46,8 @@ export const EmployeeForm = (props) => {
             addEmployees({
                 name: name.current.value,
                 locationId,
-                manager: manager.current.value,
-                fulltime: fulltime.current.value,
+                manager: JSON.parse(manager.current.value),
+                fulltime: JSON.parse(fulltime.current.value),
                 hourlyRate: hourlyRate.current.value
             })
             .then(() => props.history.push("/employees"))
@@ -79,13 +79,16 @@ export const EmployeeForm = (props) => {
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="manager">Is this person a manager? </label>
-                    <input type="text" defaultValue="" name="manager" ref={manager} id="employeeManager" className="form-control" placeholder="true or false"/>
+                    <label><input type="radio" name="manager" ref={manager} id="employeeManager" className="form-control" value="true"/>Yes</label>
+                    <label><input type="radio" name="manager" ref={manager} id="employeeManager" className="form-control" value="false"/>No</label>
                 </div>
             </fieldset>
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="fulltime">Does this person work full time? </label>
                     <input type="text" defaultValue="" name="fulltime" ref={fulltime} id="employeefulltime" className="form-control" placeholder="true or false"/>
+                    <label><input type="radio" name="fulltime" ref={fulltime} id="employeefulltime" className="form-control" value="true"/>Yes</label>
+                    <label><input type="radio" name="fulltime" ref={fulltime} id="employeefulltime" className="form-control" value="false"/>No</label>
                 </div>
             </fieldset>
             <fieldset>
@@ -106,3 +109,17 @@ export const EmployeeForm = (props) => {
         </form>
     )
 }
+
+
+{/* <fieldset>
+<div className="form-group">
+    <label htmlFor="manager">Is this person a manager? </label>
+    <input type="text" defaultValue="" name="manager" ref={manager} id="employeeManager" className="form-control" placeholder="true or false"/>
+</div>
+</fieldset> */}
+{/* <fieldset>
+<div className="form-group">
+    <label htmlFor="fulltime">Does this person work full time? </label>
+    <input type="text" defaultValue="" name="fulltime" ref={fulltime} id="employeefulltime" className="form-control" placeholder="true or false"/>
+</div>
+</fieldset> */}
