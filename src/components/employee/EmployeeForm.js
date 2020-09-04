@@ -17,6 +17,10 @@ export const EmployeeForm = (props) => {
     */
     const name = useRef(null)
     const location = useRef(null)
+    const manager = useRef(null)
+    const fulltime = useRef(null)
+    const hourlyRate = useRef(null)
+
   
 
     /*
@@ -42,6 +46,9 @@ export const EmployeeForm = (props) => {
             addEmployees({
                 name: name.current.value,
                 locationId,
+                manager: manager.current.value,
+                fulltime: fulltime.current.value,
+                hourlyRate: hourlyRate.current.value
             })
             .then(() => props.history.push("/employees"))
         }
@@ -67,6 +74,24 @@ export const EmployeeForm = (props) => {
                             </option>
                         ))}
                     </select>
+                </div>
+            </fieldset>
+            <fieldset>
+                <div className="form-group">
+                    <label htmlFor="manager">Is this person a manager? </label>
+                    <input type="text" defaultValue="" name="manager" ref={manager} id="employeeManager" className="form-control" placeholder="true or false"/>
+                </div>
+            </fieldset>
+            <fieldset>
+                <div className="form-group">
+                    <label htmlFor="fulltime">Does this person work full time? </label>
+                    <input type="text" defaultValue="" name="fulltime" ref={fulltime} id="employeefulltime" className="form-control" placeholder="true or false"/>
+                </div>
+            </fieldset>
+            <fieldset>
+                <div className="form-group">
+                    <label htmlFor="hourlyRate">Hourly Rate: </label>
+                    <input type="text" defaultValue="" name="hourlyRate" ref={hourlyRate} id="employeehourlyRate" className="form-control" placeholder="enter a number"/>
                 </div>
             </fieldset>
             <button type="submit"
