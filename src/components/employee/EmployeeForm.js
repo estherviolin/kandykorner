@@ -21,13 +21,13 @@ export const EmployeeForm = (props) => {
     const fulltime = useRef(null)
     const hourlyRate = useRef(null)
 
-  
+
 
     /*
         Get animal state and location state on initialization.
     */
     useEffect(() => {
-       getLocations()
+        getLocations()
     }, [])
 
     const constructNewEmployee = () => {
@@ -38,7 +38,7 @@ export const EmployeeForm = (props) => {
             but rather `.current.value` now in React.
         */
         const locationId = parseInt(location.current.value)
-        
+
 
         if (locationId === 0) {
             window.alert("Please select a location")
@@ -50,7 +50,7 @@ export const EmployeeForm = (props) => {
                 fulltime: JSON.parse(fulltime.current.value),
                 hourlyRate: hourlyRate.current.value
             })
-            .then(() => props.history.push("/employees"))
+                .then(() => props.history.push("/employees"))
         }
     }
 
@@ -79,29 +79,26 @@ export const EmployeeForm = (props) => {
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="manager">Is this person a manager? </label>
-                    <label><input type="radio" name="manager" ref={manager} id="employeeManager" className="form-control" value="true"/>Yes</label>
-                    <label><input type="radio" name="manager" ref={manager} id="employeeManager" className="form-control" value="false"/>No</label>
+                    <input type="text" defaultValue="" name="manager" ref={manager} id="employeeManager" className="form-control" placeholder="true or false" />
                 </div>
             </fieldset>
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="fulltime">Does this person work full time? </label>
-                    <input type="text" defaultValue="" name="fulltime" ref={fulltime} id="employeefulltime" className="form-control" placeholder="true or false"/>
-                    <label><input type="radio" name="fulltime" ref={fulltime} id="employeefulltime" className="form-control" value="true"/>Yes</label>
-                    <label><input type="radio" name="fulltime" ref={fulltime} id="employeefulltime" className="form-control" value="false"/>No</label>
+                    <input type="text" defaultValue="" name="fulltime" ref={fulltime} id="employeefulltime" className="form-control" placeholder="true or false" />
                 </div>
             </fieldset>
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="hourlyRate">Hourly Rate: </label>
-                    <input type="text" defaultValue="" name="hourlyRate" ref={hourlyRate} id="employeehourlyRate" className="form-control" placeholder="enter a number"/>
+                    <input type="text" defaultValue="" name="hourlyRate" ref={hourlyRate} id="employeehourlyRate" className="form-control" placeholder="enter a number" />
                 </div>
             </fieldset>
             <button type="submit"
                 onClick={evt => {
                     evt.preventDefault() // Prevent browser from submitting the form
                     constructNewEmployee()
-                    
+
                 }}
                 className="btn btn-primary">
                 Save Employee
@@ -110,16 +107,3 @@ export const EmployeeForm = (props) => {
     )
 }
 
-
-{/* <fieldset>
-<div className="form-group">
-    <label htmlFor="manager">Is this person a manager? </label>
-    <input type="text" defaultValue="" name="manager" ref={manager} id="employeeManager" className="form-control" placeholder="true or false"/>
-</div>
-</fieldset> */}
-{/* <fieldset>
-<div className="form-group">
-    <label htmlFor="fulltime">Does this person work full time? </label>
-    <input type="text" defaultValue="" name="fulltime" ref={fulltime} id="employeefulltime" className="form-control" placeholder="true or false"/>
-</div>
-</fieldset> */}
