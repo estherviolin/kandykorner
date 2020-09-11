@@ -1,9 +1,12 @@
 import React from "react"
+import { Link } from "react-router-dom"
 
-export const Location = ({location}) => (
+export const Location = ({ location }) => (
     <section className="location">
-        <h3 className="location__name">{location.name}</h3>
-        <div className="location__address">{location.address}</div>
-        <div className="location__handicap">Handicap Accessible: {String(location.handicap)}</div>
+        <div>
+            <Link to={`/locations/${location.id}`}>
+                {location.name}
+            </Link>
+        </div>
     </section>
 )

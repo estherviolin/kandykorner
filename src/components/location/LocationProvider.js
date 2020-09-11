@@ -22,9 +22,14 @@ export const LocationProvider = (props) => { //is props an object?
         .then(getLocations)
     }
     
+    const getLocationById = (id) => {
+        return fetch(`http://localhost:8088/locations/${id}`)
+            .then(res => res.json())
+    }
+    
     return (
         <LocationContext.Provider value={{
-            locations, addLocations, getLocations
+            locations, addLocations, getLocations, getLocationById
         }}>
             {props.children} 
         </LocationContext.Provider>
