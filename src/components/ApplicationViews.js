@@ -4,15 +4,16 @@ import { LocationProvider } from "./location/LocationProvider"
 import { LocationList } from "./location/LocationList"
 import { ProductProvider } from "./product/ProductProvider"
 import { ProductList } from "./product/ProductList"
-import { ProductTypeProvider} from "./product/ProductTypeProvider"
-import {EmployeeProvider} from "./employee/EmployeeProvider"
-import {EmployeeList} from "./employee/EmployeeList"
-import {EmployeeForm} from "./employee/EmployeeForm"
-import {OrderList} from "./product/OrderList"
+import { ProductTypeProvider } from "./product/ProductTypeProvider"
+import { EmployeeProvider } from "./employee/EmployeeProvider"
+import { EmployeeList } from "./employee/EmployeeList"
+import { EmployeeForm } from "./employee/EmployeeForm"
+import { OrderList } from "./product/OrderList"
 import { CustomerCandyProvider } from "./product/CustomerCandyProvider"
-import {CustomerProvider} from "./customer/CustomerProvider"
-import {CustomerList} from "./customer/CustomerList"
+import { CustomerProvider } from "./customer/CustomerProvider"
+import { CustomerList } from "./customer/CustomerList"
 import { InventorySearch } from "./inventory/InventorySearch"
+import { LocationDetail } from "./location/LocationDetails"
 
 export const ApplicationViews = () => {
     return (
@@ -21,22 +22,25 @@ export const ApplicationViews = () => {
                 <Route exact path="/locations">
                     <LocationList />
                 </Route>
+                <Route path="/locations/:locationId(\d+)" render={
+                    props => <LocationDetail {...props} />
+                } />
             </LocationProvider>
             <LocationProvider>
                 <Route exact path="/">
                     <LocationList />
                 </Route>
             </LocationProvider>
-            
+
             <ProductProvider>
                 <ProductTypeProvider>
                     <CustomerCandyProvider>
-                        <Route exact path="/products" render= {
+                        <Route exact path="/products" render={
                             props => {
                                 return <>
-                            <InventorySearch />
-                            <ProductList {...props}/>
-                            </>
+                                    <InventorySearch />
+                                    <ProductList {...props} />
+                                </>
                             }
                         } />
                     </CustomerCandyProvider>
@@ -46,21 +50,21 @@ export const ApplicationViews = () => {
             <ProductProvider>
                 <ProductTypeProvider>
                     <CustomerCandyProvider>
-                    <Route exact path="/orders">
-                        <OrderList />
-                    </Route>
+                        <Route exact path="/orders">
+                            <OrderList />
+                        </Route>
                     </CustomerCandyProvider>
                 </ProductTypeProvider>
             </ProductProvider>
-            
-            <EmployeeProvider>          
+
+            <EmployeeProvider>
                 <LocationProvider>
                     <Route exact path="/employees" render={
-                        props =>  <EmployeeList {...props}/>
+                        props => <EmployeeList {...props} />
                     } />
-                        <Route exact path="/employees/create" render={
-                            props => <EmployeeForm {...props} />
-                        } />
+                    <Route exact path="/employees/create" render={
+                        props => <EmployeeForm {...props} />
+                    } />
                 </LocationProvider>
             </EmployeeProvider>
 
