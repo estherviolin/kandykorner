@@ -12,6 +12,7 @@ import {OrderList} from "./product/OrderList"
 import { CustomerCandyProvider } from "./product/CustomerCandyProvider"
 import {CustomerProvider} from "./customer/CustomerProvider"
 import {CustomerList} from "./customer/CustomerList"
+import { InventorySearch } from "./inventory/InventorySearch"
 
 export const ApplicationViews = () => {
     return (
@@ -26,13 +27,18 @@ export const ApplicationViews = () => {
                     <LocationList />
                 </Route>
             </LocationProvider>
+            
             <ProductProvider>
                 <ProductTypeProvider>
                     <CustomerCandyProvider>
                         <Route exact path="/products" render= {
-                            props => <ProductList {...props}/>
-                        }>
-                        </Route>
+                            props => {
+                                return <>
+                            <InventorySearch />
+                            <ProductList {...props}/>
+                            </>
+                            }
+                        } />
                     </CustomerCandyProvider>
                 </ProductTypeProvider>
             </ProductProvider>
