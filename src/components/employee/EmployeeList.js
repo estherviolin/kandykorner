@@ -18,7 +18,7 @@ export const EmployeeList = (props) => {
             </button>
             <article className="employeeList">
             {
-                employees.map(employee => <Employee key={employee.id} employee={employee}/>)
+                employees.map(employee => <Employee key={employee.id} employee={employee} {...props}/>)
                 
             }
             </article>    
